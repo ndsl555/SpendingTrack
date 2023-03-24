@@ -1,36 +1,20 @@
-Inventory - Solution Code
-==================================
-
-Solution code for Android Basics in Kotlin.
-Codelab: Android Jetpack - Room.
-
-Introduction
+基本介紹
 ------------
 
-This app is an Inventory tracking app. Demos how to add, update, sell, and delete items from the local database. 
-This app demonstrated
-the use of Android Jetpack component [Room](https://developer.android.com/training/data-storage/room) database.  
+一款記帳程式 可以自定義顏色,呈現出每項支出的圓餅圖
 
-The app also leverages [ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel),
-[LiveData](https://developer.android.com/topic/libraries/architecture/livedata),
-[Flow] (https://developer.android.com/kotlin/flow),
-[View Binding](https://developer.android.com/topic/libraries/view-binding),
-and [Navigation](https://developer.android.com/topic/libraries/architecture/navigation/)
-with the SafeArgs plugin for parameter passing between fragments.
+語法:kotlin
 
-Pre-requisites
---------------
+運用MVVM的方式撰寫 並利用Livedata達到即時更新UI介面的數據
 
-You need to know:
-- How to create and use fragments.
-- How to navigate between fragments, and use safeArgs to pass data between fragments.
-- How to use architecture components including ViewModel, LiveData, and LiveData transformations.
-- How to use coroutines for long-running tasks.
-- RecyclerView and adapters
-- SQLite database and the SQLite query language
+使用之後端資料庫為:zoom database
 
+可記錄一年的支出情況
 
-Getting Started
----------------
-
-1. Download and run the app.
+優點
+------------
+顏色定義自由 
+每月預算可即時設定
+可排序出每月支出項目的高低
+利用進度條(progressbar)呈現該月預算所剩餘額
+載具功能
