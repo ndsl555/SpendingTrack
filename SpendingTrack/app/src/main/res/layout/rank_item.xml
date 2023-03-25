@@ -13,6 +13,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
+            android:textSize="20dp"
             android:id="@+id/txtnum"
             android:layout_width="79dp"
             android:layout_height="52dp"
@@ -25,6 +26,7 @@
             app:layout_constraintVertical_bias="0.428" />
 
         <TextView
+            android:textSize="20dp"
             android:id="@+id/txtname"
             android:layout_width="79dp"
             android:layout_height="50dp"
@@ -37,6 +39,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
+            android:textSize="20dp"
             android:id="@+id/txtprice"
             android:layout_width="113dp"
             android:layout_height="52dp"
