@@ -77,7 +77,7 @@ class ItemListFragment : Fragment() {
         // changes.
         viewModel.allItems.observe(this.viewLifecycleOwner) { items ->
             items.let {
-                adapter.submitList(it)
+                adapter.submitList(it.reversed())
             }
         }
 
