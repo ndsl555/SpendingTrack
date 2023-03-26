@@ -32,6 +32,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.inventory.data.ItemRoomDatabase
 import com.example.inventory.databinding.ItemListFragmentBinding
 import com.google.android.material.divider.MaterialDividerItemDecoration
+import java.util.*
 
 /**
  * Main fragment displaying details for all items in the database.
@@ -71,6 +72,7 @@ class ItemListFragment : Fragment() {
         binding.recyclerView.layoutManager = LinearLayoutManager(this.context)
         binding.recyclerView.adapter = adapter
 
+        //var calendar: Calendar = Calendar.getInstance(TimeZone.getTimeZone("GMT+08:00"))
 
 
         // Attach an observer on the allItems list to update the UI automatically when the data
