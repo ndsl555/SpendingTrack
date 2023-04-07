@@ -42,7 +42,7 @@ interface ItemDao {
     suspend fun delete(item: Item)
 
 
-    @Query("DELETE FROM item WHERE name = :name AND price= :price AND colorcode= :colorcode AND year= :year AND month= :month AND day= :day" )
+    @Query("DELETE FROM item WHERE name = :name AND price =:price AND colorcode= :colorcode AND year= :year AND month= :month AND day= :day" )
     fun deleteByarg(name: String,price: Double,colorcode: String,year: String,month: String,day: String)
 
     //@Query("DELETE FROM Limit")

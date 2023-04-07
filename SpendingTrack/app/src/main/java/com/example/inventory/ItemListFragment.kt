@@ -109,6 +109,14 @@ class ItemListFragment : Fragment() {
             }
         }
 
+        binding.floatingQRButton.setOnClickListener {
+            activity?.let{
+                val intent = Intent (it,QRMainActivity::class.java)
+                it.startActivity(intent)
+            }
+        }
+
+
 
     }
 }

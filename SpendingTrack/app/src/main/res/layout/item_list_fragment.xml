@@ -118,32 +118,41 @@
         android:id="@+id/floatingbarcodeButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="28dp"
+        android:layout_marginEnd="16dp"
         android:layout_marginBottom="8dp"
         android:src="@drawable/baseline_view_headline_24"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/floatingActionButton" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floatingQRButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="12dp"
+        android:layout_marginBottom="8dp"
+        android:src="@drawable/baseline_qr_code_scanner_24"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/floatingbarcodeButton" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/floatinglimitButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="44dp"
         android:layout_marginBottom="8dp"
         android:src="@drawable/baseline_attach_money_24"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/floatingbarcodeButton" />
+        app:layout_constraintEnd_toStartOf="@+id/floatingQRButton"
+        app:layout_constraintHorizontal_bias="0.545"
+        app:layout_constraintStart_toEndOf="@+id/floatingvisualButton" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/floatingvisualButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="32dp"
         android:layout_marginBottom="8dp"
         android:src="@drawable/baseline_pie_chart_24"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/floatinglimitButton" />
-
+        tools:layout_editor_absoluteX="31dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
