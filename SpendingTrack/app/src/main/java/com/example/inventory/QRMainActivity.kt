@@ -3,6 +3,7 @@ package com.example.inventory
 import android.content.Intent
 import android.os.*
 import android.os.StrictMode.ThreadPolicy
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.example.inventory.data.Invoice
@@ -16,6 +17,8 @@ import okhttp3.Dispatcher
 import org.jsoup.Jsoup
 import org.jsoup.nodes.Document
 import org.jsoup.select.Elements
+import java.util.*
+import kotlin.collections.ArrayList
 
 class QRMainActivity : AppCompatActivity() {
 
@@ -32,6 +35,10 @@ class QRMainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         supportActionBar?.hide()
+        var calendar: Calendar = Calendar.getInstance(TimeZone.getTimeZone("GMT+08:00"))
+        val thisyear=calendar.get(Calendar.YEAR).toString()
+        val thismonth=(calendar.get(Calendar.MONTH)+1).toString()
+
         binding.viewResult.text = ""
 
         binding.invoiceHistory.setOnClickListener {
@@ -95,6 +102,7 @@ class QRMainActivity : AppCompatActivity() {
         binding.viewScan.setOnClickListener {
             binding.viewBarcode.decodeSingle { result ->
                 val sb = StringBuilder()
+                println(result.text)
                 binding.viewResult.text = result.text.substring(2,10)
                 var in_date=result.text.substring(10,18)
                 sb.append(in_date.substring(0,3)).append("/").append(in_date.substring(3,5)).append("/").append(in_date.substring(5,7))
@@ -103,13 +111,27 @@ class QRMainActivity : AppCompatActivity() {
                 vibrate()
                 binding.invoiceStore.setOnClickListener {
                     if (!binding.viewResult.text.isNullOrBlank()){
-
                         val invoice = Invoice(null,sb.toString(),binding.viewResult.text.toString())
-                        //viewModel.addNewItem(sb.toString(),binding.viewResult.text.toString())
-                        GlobalScope.launch(Dispatchers.IO){
-                            ItemRoomDatabase.getDatabase(applicationContext).InvoiceDao().insert(invoice)
+                        val a =thisyear.toInt()-1911
+                        val b =sb.toString().split('/')[0].toInt()
+                        val c =sb.toString().split('/')[1].toInt()
+                        if (a-b==0){
+                            GlobalScope.launch(Dispatchers.IO){
+                                ItemRoomDatabase.getDatabase(applicationContext).InvoiceDao().insert(invoice)
+                            }
                         }
-
+                        else if(a-b>0){
+                            if ((a-b==1) and  ((thismonth.toInt()==1) || (thismonth.toInt()==2))){
+                                if(c==11||c==12){
+                                    GlobalScope.launch(Dispatchers.IO){
+                                        ItemRoomDatabase.getDatabase(applicationContext).InvoiceDao().insert(invoice)
+                                    }
+                                }
+                            }
+                        }
+                        else{
+                            Toast.makeText(this.applicationContext,"此發票過期", Toast.LENGTH_SHORT).show()
+                        }
                         sb.clear()
                         binding.viewResult.text =""
                     }
