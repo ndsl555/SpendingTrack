@@ -7,7 +7,7 @@
 
 運用MVVM的方式撰寫 並利用Livedata達到即時更新UI介面的數據
 
-使用之後端資料庫為:zoom database
+使用之後端資料庫為:room database
 
 可記錄一年的支出情況
 
