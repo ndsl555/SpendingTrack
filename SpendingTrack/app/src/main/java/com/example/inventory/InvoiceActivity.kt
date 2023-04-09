@@ -68,8 +68,10 @@ class InvoiceActivity : AppCompatActivity() {
                 val list = ArrayList<Example3Item>()
 
                 for (i in 0 until invoicelist.size) {
-                    val item = Example3Item(datelist[i], invoicelist[i])
-                    list+=item
+                    if (datelist[i].split('/')[1].toInt()>monlist[0].toInt()-2){
+                        val item = Example3Item(datelist[i], invoicelist[i])
+                        list+=item
+                    }
                 }
 
                 binding.invoiceRecycle.addItemDecoration(DividerItemDecoration(this@InvoiceActivity, LinearLayoutManager.VERTICAL))

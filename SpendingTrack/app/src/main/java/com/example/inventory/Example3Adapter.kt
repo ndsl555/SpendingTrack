@@ -78,9 +78,7 @@ class Example3Adapter(private val exampleList: List<Example3Item>, private val d
                 }
             }
         }
-
-
-        if (currentItem.itemdate.split('/')[1].toInt().equals(monlist[2].toInt())
+        else if (currentItem.itemdate.split('/')[1].toInt().equals(monlist[2].toInt())
             ||currentItem.itemdate.split('/')[1].toInt().equals(monlist[3].toInt())){
             if (currentItem.itemnumber == targetlist[5]) {
                 holder.textView3.text=monlist[2]+'-'+monlist[3]+'月'
@@ -88,37 +86,37 @@ class Example3Adapter(private val exampleList: List<Example3Item>, private val d
             } else if (currentItem.itemnumber == targetlist[6]) {
                 holder.textView3.text=monlist[2]+'-'+monlist[3]+'月'
                 holder.textView4.text="特獎:兩百萬元!"
-            } else if (currentItem.itemnumber == monlist[7] || currentItem.itemnumber == monlist[8] || currentItem.itemnumber == monlist[9]) {
+            } else if (currentItem.itemnumber == targetlist[7] || currentItem.itemnumber == targetlist[8] || currentItem.itemnumber == targetlist[9]) {
                 holder.textView3.text=monlist[2]+'-'+monlist[3]+'月'
                 holder.textView4.text="頭獎:二十萬元!"
             } else {
-                if (currentItem.itemnumber.substring(5) == monlist[7].substring(5) || currentItem.itemnumber.substring(5) == monlist[8].substring(
+                if (currentItem.itemnumber.substring(5) == targetlist[7].substring(5) || currentItem.itemnumber.substring(5) == targetlist[8].substring(
                         5
-                    ) || currentItem.itemnumber.substring(5) == monlist[9].substring(5)
+                    ) || currentItem.itemnumber.substring(5) == targetlist[9].substring(5)
                 ) {
-                    holder.textView3.text=monlist[2]+'-'+monlist[3]+'月'
+                    holder.textView3.text=targetlist[2]+'-'+targetlist[3]+'月'
                     holder.textView4.text="200元"
-                } else if (currentItem.itemnumber.substring(4) == monlist[7].substring(4) || currentItem.itemnumber.substring(4) == monlist[8].substring(
+                } else if (currentItem.itemnumber.substring(4) == targetlist[7].substring(4) || currentItem.itemnumber.substring(4) == targetlist[8].substring(
                         4
-                    ) || currentItem.itemnumber.substring(4) == monlist[9].substring(4)
+                    ) || currentItem.itemnumber.substring(4) == targetlist[9].substring(4)
                 ) {
                     holder.textView3.text=monlist[2]+'-'+monlist[3]+'月'
                     holder.textView4.text="1000元"
-                } else if (currentItem.itemnumber.substring(3) == monlist[7].substring(3) || currentItem.itemnumber.substring(3) == monlist[8].substring(
+                } else if (currentItem.itemnumber.substring(3) == targetlist[7].substring(3) || currentItem.itemnumber.substring(3) == targetlist[8].substring(
                         3
-                    ) || currentItem.itemnumber.substring(3) == monlist[9].substring(3)
+                    ) || currentItem.itemnumber.substring(3) == targetlist[9].substring(3)
                 ) {
                     holder.textView3.text=monlist[2]+'-'+monlist[3]+'月'
                     holder.textView4.text="4000元"
-                } else if (currentItem.itemnumber.substring(2) == monlist[7].substring(2) || currentItem.itemnumber.substring(2) == monlist[8].substring(
+                } else if (currentItem.itemnumber.substring(2) == targetlist[7].substring(2) || currentItem.itemnumber.substring(2) == targetlist[8].substring(
                         2
-                    ) || currentItem.itemnumber.substring(2) == monlist[9].substring(2)
+                    ) || currentItem.itemnumber.substring(2) == targetlist[9].substring(2)
                 ) {
                     holder.textView3.text=monlist[2]+'-'+monlist[3]+'月'
                     holder.textView4.text="一萬元"
-                } else if (currentItem.itemnumber.substring(1) == monlist[7].substring(1) || currentItem.itemnumber.substring(1) == monlist[8].substring(
+                } else if (currentItem.itemnumber.substring(1) == targetlist[7].substring(1) || currentItem.itemnumber.substring(1) == targetlist[8].substring(
                         1
-                    ) || currentItem.itemnumber.substring(1) == monlist[9].substring(1)
+                    ) || currentItem.itemnumber.substring(1) == targetlist[9].substring(1)
                 ) {
                     holder.textView3.text=monlist[2]+'-'+monlist[3]+'月'
                     holder.textView4.text="四萬元"
@@ -128,7 +126,6 @@ class Example3Adapter(private val exampleList: List<Example3Item>, private val d
                 }
             }
         }
-
 
         holder.imageButton.setOnClickListener {
             AlertDialog.Builder(it.context).apply {

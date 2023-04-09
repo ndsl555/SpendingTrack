@@ -111,27 +111,39 @@ class QRMainActivity : AppCompatActivity() {
                 vibrate()
                 binding.invoiceStore.setOnClickListener {
                     if (!binding.viewResult.text.isNullOrBlank()){
+                        if (Build.VERSION.SDK_INT > 9) {
+                            val policy = ThreadPolicy.Builder().permitAll().build()
+                            StrictMode.setThreadPolicy(policy)
+                        }
+                        val doc1 = Jsoup.connect("https://invoice.etax.nat.gov.tw/index.html").get()
+                        val elements1 = doc1.getElementsByClass("etw-web")
+                        val top = elements1.select("a.etw-on")
+                        var startmonth=top.text().substring(4,9).split("-")[0].toInt()
+                        var endmonth=top.text().substring(4,9).split("-")[1].toInt()
+
                         val invoice = Invoice(null,sb.toString(),binding.viewResult.text.toString())
                         val a =thisyear.toInt()-1911
                         val b =sb.toString().split('/')[0].toInt()
                         val c =sb.toString().split('/')[1].toInt()
+                        println(c)
                         if (a-b==0){
                             GlobalScope.launch(Dispatchers.IO){
                                 ItemRoomDatabase.getDatabase(applicationContext).InvoiceDao().insert(invoice)
                             }
                         }
                         else if(a-b>0){
-                            if ((a-b==1) and  ((thismonth.toInt()==1) || (thismonth.toInt()==2))){
+                            if ((a-b==1) and  ((startmonth==1) || (endmonth==2))){
                                 if(c==11||c==12){
                                     GlobalScope.launch(Dispatchers.IO){
                                         ItemRoomDatabase.getDatabase(applicationContext).InvoiceDao().insert(invoice)
                                     }
                                 }
                             }
+                            else{
+                                Toast.makeText(this.applicationContext,"此發票過期", Toast.LENGTH_SHORT).show()
+                            }
                         }
-                        else{
-                            Toast.makeText(this.applicationContext,"此發票過期", Toast.LENGTH_SHORT).show()
-                        }
+
                         sb.clear()
                         binding.viewResult.text =""
                     }
